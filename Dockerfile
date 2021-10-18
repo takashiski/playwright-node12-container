@@ -44,5 +44,5 @@ RUN mkdir /ms-playwright && \
 	# npm i /tmp/playwright-core.tar.gz && \
 	npx playwright install && \
 	DEBIAN_FRONTEND=noninteractive npx playwright install-deps && \
-	rm -rf /tmp/pw && rm /tmp/playwright-core.tar.gz && \
+	# rm -rf /tmp/pw && rm /tmp/playwright-core.tar.gz && \
 	chmod -R 777 /ms-playwright
