@@ -32,7 +32,7 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 # 1. Add tip-of-tree Playwright package to install its browsers.
 #    The package should be built beforehand from tip-of-tree Playwright.
-COPY ./playwright-core.tar.gz /tmp/playwright-core.tar.gz
+# COPY ./playwright-core.tar.gz /tmp/playwright-core.tar.gz
 
 # 2. Install playwright and then delete the installation.
 #    Browsers will remain downloaded in `/ms-playwright`.
@@ -40,7 +40,8 @@ COPY ./playwright-core.tar.gz /tmp/playwright-core.tar.gz
 #    registry.
 RUN mkdir /ms-playwright && \
 	mkdir /tmp/pw && cd /tmp/pw && npm init -y && \
-	npm i /tmp/playwright-core.tar.gz && \
+	npm install playwright && \
+	# npm i /tmp/playwright-core.tar.gz && \
 	npx playwright install && \
 	DEBIAN_FRONTEND=noninteractive npx playwright install-deps && \
 	rm -rf /tmp/pw && rm /tmp/playwright-core.tar.gz && \
